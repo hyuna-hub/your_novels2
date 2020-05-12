@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YourNovels</title>
+    <title>Your Novels</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,50 +11,57 @@
 
   <body style="padding-top:50px">
     <header>
-      <div class="container">
-        <nav class="navbar fixed-top navbar-light bg-info">
-<!-- ロゴから小説一覧へ飛べるようにする -->
-          <a href="" class="navbar-brand">Your Novels</a>
+      <nav class="navbar navbar-fixed-top navbar-light bg-info">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Your Noels</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarEexample8">
 <!-- ここからナビゲーション -->
-          <ul class="nav justify-content-end">
+            <ul class="nav navbar-nav">
               <% if user_signed_in? %>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">マイページ</a>
+                <li>
+                  <a href="" class="btn-sm btn-info">マイページ</a>
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">小説を書く</a>
+                <li>
+                  <a href="" class="btn-sm btn-info">小説を書く</a>
                   <!-- 小説作成画面 -->
                 </li>
-                <li class="nav-item">
-                 <a href="" class="nav-link btn-sm btn-info">小説を読む</a>
+                <li>
+                 <a href="" class="btn-sm btn-info">小説を読む</a>
                   <!-- 小説一覧画面 -->
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">ログアウト</a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">検索フォーム</a>
+                <li>
+                  <a href="" class="btn-sm btn-info">ログアウト</a>
                 </li>
               <% else %>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">ホーム</a>
+                <li>
+                  <%= link_to 'ホーム', root_path, class:"btn-sm btn-info" %>
                   <!-- topに戻る -->
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">About</a>
+                <li>
+                  <%= link_to 'About', home_about_path, class:"btn-sm btn-info" %>
                   <!-- aboutに移動ーhome/about -->
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">新規登録</a>
+                <li>
+                  <%= link_to '新規登録', new_user_registration_path, class:"btn-sm btn-info" %>
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link btn-sm btn-info">ログイン</a>
+                <li>
+                  <%= link_to 'ログイン', new_user_session_path, class:"btn-sm btn-info" %>
                 </li>
               <% end %>
-          </ul>
+            </ul>
 <!-- ここまでナビゲーション -->
-        </nav>
-      </div>
+            <p class="navbar-text">ようこそゲストさん。</p>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="検索キーワード">
+              </div>
+              <button type="submit" class="btn btn-default">検索</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </header>
 
   <%= yield %>
@@ -62,7 +69,7 @@
       <footer class="footer">
         <div class="container">
           <div class="row">
-            <div class="col-xs-3 col-xs-offset-9">
+            <div class="col-xs-3 col-xs-offset-5">
               <p class="footer-text">Your Novels</p>
             </div>
           </div>

@@ -1,0 +1,52 @@
+<h1>ユーザーのSHOW</h1>
+
+<div class='body'>
+	<div class="container">
+<!-- フラッシュメッセージ -->
+		<p id="notice"><%=  notice %></p>
+			<div class="row">
+<!-- サイドバー -->
+				<div class="col-xs-3" >
+					<div class="profile-container">
+						<p>renderでユーザー情報呼び出し</p>
+					</div>
+					<div class="row">
+						<p>renderでリンク一覧呼び出し</p>
+						<p>小説を書く</p>
+						<p>メモを書く</p>
+						<p>フォロー一覧</p>
+						<p>マイプロフィール</p>
+					</div>
+
+				</div>
+<!-- メイン -->
+				<div class="col-xs-9">
+					<h1>Your Novels</h1>
+						<table class="table table-hover table-inverse">
+							<thead>
+								<tr>
+									<th></th>
+									<th>タイトル</th>
+									<th>キャプション</th>
+									<th colspan="3"></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<p>eachで一覧表示</p>
+								<tr>
+									<td>title</td>
+									<td>caption</td>
+									<td>
+        								<p class="comment-count">countメソッド？件のコメント</p>
+  									</td>
+          							<td>本人の場合のみ表示→編集</td>
+          							<td>本人の場合のみ表示→削除</td>
+								</tr>
+							</tbody>
+						</table>
+
+				</div>
+			</div>
+	</div>
+</div>
