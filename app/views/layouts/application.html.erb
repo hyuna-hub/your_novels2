@@ -9,9 +9,55 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="padding-top:50px">
+    <header>
+      <div class="container">
+        <nav class="navbar fixed-top navbar-light bg-info">
+<!-- ロゴから小説一覧へ飛べるようにする -->
+          <a href="" class="navbar-brand">Your Novels</a>
+<!-- ここからナビゲーション -->
+          <ul class="nav justify-content-end">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">マイページ</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">小説を書く</a>
+                  <!-- 小説作成画面 -->
+                </li>
+                <li class="nav-item">
+                 <a href="" class="nav-link btn-sm btn-info">小説を読む</a>
+                  <!-- 小説一覧画面 -->
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">ログアウト</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">検索フォーム</a>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">ホーム</a>
+                  <!-- topに戻る -->
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">About</a>
+                  <!-- aboutに移動ーhome/about -->
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">新規登録</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link btn-sm btn-info">ログイン</a>
+                </li>
+              <% end %>
+          </ul>
+<!-- ここまでナビゲーション -->
+        </nav>
+      </div>
+    </header>
 
-    <%= yield %>
+  <%= yield %>
 
       <footer class="footer">
         <div class="container">
