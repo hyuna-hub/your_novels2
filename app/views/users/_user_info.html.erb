@@ -1,0 +1,30 @@
+<div class="row" >
+    <div class="col-xs-12">
+        <h2>ユーザー情報</h2>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+    		        </tr>
+    		        <tr>
+    			         <th>ユーザー名</th>
+    			         <th><%= @user.name %></th>
+    		        </tr>
+    		        <tr>
+    			         <th>自己紹介</th>
+    			         <th><%= @user.introduction %></th>
+    		        </tr>
+    	        </tbody>
+            </table>
+
+
+<div class="row" >
+    <div class="col-xs-12">
+        <% if @user == current_user %>
+    	   <%= link_to"新しい小説を書く", new_novel_path, class: "col-xs-12 " %>
+           <%= link_to"新しいメモを書く", new_memo_path, class: "col-xs-12 btn btn-default " %>
+           <%= link_to"メモを見る", memos_path, class: "col-xs-12 btn btn-default " %>
+           <%= link_to"プロフィールを編集する", edit_user_path(current_user.id), class: "col-xs-12 " %>
+        <% end %>
+    </div>
+</div>

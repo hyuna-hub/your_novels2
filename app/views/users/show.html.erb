@@ -4,17 +4,7 @@
 		<div class="row">
 <!-- サイドバー -->
 			<div class="col-xs-3" >
-				<div class="profile-container">
-					<p>renderでユーザー情報呼び出し</p>
-				</div>
-				<div class="row">
-					<p>renderでリンク一覧呼び出し</p>
-					<p>小説を書く</p>
-					<p>メモを書く</p>
-					<p>フォロー一覧</p>
-					<p>マイプロフィール</p>
-				</div>
-
+				<%= render 'users/user_info' %>
 			</div>
 <!-- メイン -->
 			<div class="col-xs-9">
@@ -28,16 +18,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<p>eachで一覧表示</p>
-							<tr>
-								<td>title</td>
-								<td>caption</td>
-								<td>
-        							<p class="comment-count">countメソッド？件のコメント</p>
-  								</td>
-          						<td>本人の場合のみ表示→編集</td>
-          						<td>本人の場合のみ表示→削除</td>
-							</tr>
+							<% @user.novels.each do |novel| %>
+								<tr>
+									<td><%= link_to novel.title, novel_path(novel.id) %>
+									</td>
+									<td><%= novel.caption %>
+									</td>
+									<td>
+        								<p class="comment-count"><%= @novel.comments.count %>件のコメント</p>
+  									</td>
+  									<% if @novel.user == current_user %>
+          							<td><%= link_to '編集', edit_novel_path(@novel), class: "btn-sm btn-success edit_novel_#{@novel.id}" %>
+          							</td>
+          							<td><%= link_to '削除', @novel, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_novel_#{@novel.id}"%>
+          							</td>
+        							<% end %>
+								</tr>
+							<% end %>
 						</tbody>
 					</table>
 
