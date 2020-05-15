@@ -25,6 +25,7 @@
            <%= link_to"新しいメモを書く", new_memo_path, class: "col-xs-12 btn btn-default " %>
            <%= link_to"メモを見る", memos_path, class: "col-xs-12 btn btn-default " %>
            <%= link_to"プロフィールを編集する", edit_user_path(current_user.id), class: "col-xs-12 " %>
+           <%= link_to "削除", user_path(@user.id), method: :delete, data: { confirm: "退会しますか？" }, class: "col-xs-12 " %>
         <% end %>
     </div>
 </div>

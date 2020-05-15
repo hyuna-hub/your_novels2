@@ -5,15 +5,26 @@ class NovelsController < ApplicationController
 	end
 
 	def show
-		
+		@novel = Novel.find(params[:id])
+		@user = @novel.user
 	end
 
 	def new
-		
+		@novel = Novel.new
 	end
 
 	def create
-		
+		 @novel = Novel.new(novel_params)
+      	 @novel.user_id = current_user.id
+    	if @novel.save
+        	flash[:notice] = '小説を作成しました。'
+        	redirect_to novel_path(@novel.id)
+    	else
+        	@novels = Book.all
+        	flash[:notice] = '小説の作成に失敗しました。'
+      		render template:"users/show"
+  	  	end
+  end
 	end
 
 	def edit
