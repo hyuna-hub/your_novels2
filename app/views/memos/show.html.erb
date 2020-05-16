@@ -1,4 +1,7 @@
 <div class='container'>
+	<p id="notice"><%=  notice %></p>
+	<%= render 'layouts/error_novel' %>
+
 	<div class="row">
 <!-- サイドバー -->
 			<div class="col-xs-3" >
@@ -6,13 +9,25 @@
 			</div>
 <!-- メイン -->
 			<div class="col-xs-9">
-				<p>タイトル</p>
-				<p>ジャンル</p>
-				<p>キャプション</p>
-				<p>本文</p>
-				<p>コメント一覧 eachメソッド</p>
-				<p>編集ボタン　editリンク</p>
-				<p>削除ボタン　destroyリンク</p>
+				<div class="row">
+					<div class="memo-title col-xs-8">
+						<%= @memo.title %>
+					</div>
+					<div class="memo-button col-xs-4">
+						<button type="button" class="btn btn-success col-xs-2">
+							<%= link_to "編集", edit_memo_path(@memo.id) %>
+						</button>
+						<button type="button" class="btn btn-danger col-xs-2">
+							<%= link_to "削除", memo_path(@memo.id), method: :delete, data: { confirm: "このメモを削除しますか？" } %>
+						</button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="memo-body col-xs-12">
+						<%= @memo.body %>
+					</div>
+				</div>
 			</div>
 	</div>
 </div>

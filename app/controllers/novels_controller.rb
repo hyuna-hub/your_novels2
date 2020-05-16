@@ -6,7 +6,7 @@ class NovelsController < ApplicationController
 
 	def show
 		@novel = Novel.find(params[:id])
-		@user = @novel.user
+		@user = current_user
 	end
 
 	def new
@@ -20,7 +20,7 @@ class NovelsController < ApplicationController
            flash[:notice] = '小説を作成しました。'
            redirect_to novel_path(@novel.id)
     	else
-           @novels = Book.all
+           @novels = Novel.all
            flash[:notice] = '小説の作成に失敗しました。'
       	   render template:"users/show"
   	  	end
