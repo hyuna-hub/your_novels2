@@ -17,26 +17,39 @@ class NovelsController < ApplicationController
 		 @novel = Novel.new(novel_params)
       	 @novel.user_id = current_user.id
     	if @novel.save
-        	flash[:notice] = '小説を作成しました。'
-        	redirect_to novel_path(@novel.id)
+           flash[:notice] = '小説を作成しました。'
+           redirect_to novel_path(@novel.id)
     	else
-        	@novels = Book.all
-        	flash[:notice] = '小説の作成に失敗しました。'
-      		render template:"users/show"
+           @novels = Book.all
+           flash[:notice] = '小説の作成に失敗しました。'
+      	   render template:"users/show"
   	  	end
   end
 	end
 
 	def edit
-		
+		@novel = Novel.find(params[:id])
+    	if @novel.user_id != current_user.id
+       	   redirect_to novel_path(@novel.id)
+    	end
 	end
 
 	def update
-		
+		@novel = Novel.find(params[:id])
+		if @novel.update(novel_params)
+		   flash[:notice] = '小説を更新しました。'
+		   redirect_to book_path(@book.id)
+  		else
+  		　　flash[:notice] = '小説の更新に失敗しました。'
+      	   render :edit
+		end
 	end
 
 	def destroy
-		
+		@novel = Novel.find(params[:id])
+		@user = current_user
+        @novel.destroy
+        redirect_to user_path(@user.id)
 	end
 
 	private

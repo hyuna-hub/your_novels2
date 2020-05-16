@@ -1,5 +1,6 @@
 <div class='container'>
 	<h2>小説作成</h2>
+	<%= render 'layouts/error_novel' %>
 	<p>※本文の入力をsummernoteでできるようにする</p>
 
 		<%= form_for @novel do |f| %>
@@ -33,7 +34,9 @@
 			</div>
 
 			<div class="action row">
-				<%= f.submit '小説を作成' %>
+				<button type="button" class="btn btn-success">
+					<%= f.submit '小説を作成' %>
+				</button>
 			</div>
 
 		<% end %>

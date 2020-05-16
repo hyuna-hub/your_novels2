@@ -1,8 +1,45 @@
 <div class='container'>
-	<p>form_for/form_with</p>
-	<p>タイトル：text_field</p>
-	<p>ジャンル：選択ボックス</p>
-	<p>キャプション：text_field</p>
-	<p>本文：summernote</p>
-	<p>submitボタン</p>
+	<h2>小説編集</h2>
+	<p id="notice"><%=  notice %></p>
+	<%= render 'layouts/error_novel' %>
+
+	<p>※本文の入力をsummernoteでできるようにする</p>
+
+	<%= form_for @novel do |f| %>
+
+			<div class="field row">
+				<label for="novel_title">タイトル</label>
+				<div class="col-xs-12">
+					<%= f.text_field :title %>
+				</div>
+			</div>
+
+			<div class="field row">
+      			<label for="novel_genre">ジャンル</label>
+      			<div class="col-sm-12">
+        			<%= f.select :genre, ['未選択', '恋愛', 'ミステリー', '歴史', 'SF', 'ファンタジー', 'コメディ', 'ホラー', '詩歌', 'エッセイ', 'その他'],{ class: "genre"} %>
+      			</div>
+    		</div>
+
+			<div class="field row">
+				<label for="novel_caption">キャプション</label>
+				<div class="col-xs-12">
+					<%= f.text_field :caption %>
+				</div>
+			</div>
+
+			<div class="field row">
+				<label for="novel_body">本文</label>
+				<div class="col-xs-12">
+					<%= f.text_area :body %>
+				</div>
+			</div>
+
+			<div class="action row">
+				<button type="button" class="btn btn-success">
+					<%= f.submit '編集を保存' %>
+				</button>
+			</div>
+
+	<% end %>
 </div>
