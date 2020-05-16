@@ -1,8 +1,51 @@
 <div class='container'>
-	<p>ジャンル検索</p>
-	<p>部分一致検索</p>
-	<p>eachメソッド 全小説一覧</p>
-	<p>タイトル showにリンク</p>
-	<p>ジャンル</p>
-	<p>キャプション</p>
+<!-- 検索機能 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>小説を探す</h4>
+				<p>ジャンル検索</p>
+				<p>部分一致検索</p>
+		</div>
+	</div>
+<!-- 検索機能ここまで -->
+
+<!-- 以下投稿一覧 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>投稿作品一覧</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>タイトル</th>
+							<th>ジャンル</th>
+							<th>作者</th>
+							<th>キャプション</th>
+							<th colspan="2"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @novels.each do |novel| %>
+							<tr>
+								<td><%= link_to novel.title, novel_path(novel.id) %></td>
+								<td><%= novel.genre %></td>
+								<td>
+									<%= link_to @name, user_path(novel.user_id) %>
+								</td>
+								<td><%= novel.caption %></td>
+					<!-- いいね！機能 -->
+								<td>
+									？？いいね
+								</td>
+					<!-- コメントカウント -->
+								<td>
+									？？コメント
+  								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+		</div>
+	</div>
 </div>
