@@ -1,11 +1,13 @@
 class MemosController < ApplicationController
 
 	def index
-		
+		@memos = Memo.all
+		@user = @memo.user
 	end
 
 	def show
-		
+		@memo = Memo.find(params[:id])
+		@user = @memo.user
 	end
 
 	def new
@@ -26,15 +28,25 @@ class MemosController < ApplicationController
 	end
 
 	def edit
-		
+		@memo = Memo.find(params[:id])
 	end
 
 	def update
-		
+		@memo = Memo.find(params[:id])
+		if @memo.update(memo_params)
+		   flash[:notice] = 'メモを更新しました。'
+		   redirect_to memo_path(@memo.id)
+  		else
+  		　　flash[:notice] = 'メモの更新に失敗しました。'
+      	   render :edit
+		end
 	end
 
 	def destroy
-		
+		@memo = Memo.find(params[:id])
+		@user = current_user
+        @memo.destroy
+        redirect_to user_path(@user.id)
 	end
 
 	private

@@ -38,7 +38,7 @@ class NovelsController < ApplicationController
 		@novel = Novel.find(params[:id])
 		if @novel.update(novel_params)
 		   flash[:notice] = '小説を更新しました。'
-		   redirect_to book_path(@book.id)
+		   redirect_to novel_path(@novel.id)
   		else
   		　　flash[:notice] = '小説の更新に失敗しました。'
       	   render :edit

@@ -6,10 +6,35 @@
 			</div>
 <!-- メイン -->
 			<div class="col-xs-9">
-				<p>form_for/form_with</p>
-				<p>タイトル：text_field</p>
-				<p>本文：summernote</p>
-				<p>submitボタン</p>
+				<h2>メモ編集</h2>
+					<p id="notice"><%=  notice %></p>
+					<%= render 'layouts/error_memo' %>
+
+					<p>※本文の入力をsummernoteでできるようにする</p>
+
+					<%= form_for @memo do |f| %>
+
+						<div class="field row">
+							<label for="memo_title">タイトル</label>
+							<div class="col-xs-12">
+								<%= f.text_field :title %>
+							</div>
+						</div>
+
+						<div class="field row">
+							<label for="memo_body">本文</label>
+							<div class="col-xs-12">
+								<%= f.text_area :body %>
+							</div>
+						</div>
+
+						<div class="action row">
+							<button type="button" class="btn btn-success">
+								<%= f.submit '編集を保存' %>
+							</button>
+						</div>
+
+					<% end %>
 			</div>
 	</div>
 </div>
