@@ -29,11 +29,11 @@
 		</div>
 <!-- いいね！数カウント-->
 		<div class="favorite-count col-xs-4">
-			？？いいね！
+			<span class="glyphicon glyphicon-heart"><%= @novel.favorites.count%>いいね</span>
 		</div>
 <!-- コメント数カウント -->
 		<div class="comment-count col-xs-4">
-			？？コメント
+			<%= @novel.comments.count %>コメント
   		</div>
   	</div>
 
@@ -52,9 +52,24 @@
 <!-- いいね！機能 -->
 	<div class="row">
 		<div class="favorite col-xs-6">
+			<% if @novel.favorited_by?(current_user) %>
+    			<%= link_to novel_favorites_path(novel, redirect_id: 0), method: :delete do %>
+      				<span class="glyphicon glyphicon-heart"></span>
+      				<%= @novel.favorites.count %> いいね
+    			<% end %>
+			<% else %>
+  				<%= link_to favorites_path(book, redirect_id: 0), method: :post do %>
+      				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    				<%= @book.favorites.count %> いいね
+    			<% end %>
+			<% end %>
 		</div>
 <!-- コメント作成 -->
 		<div class="comment col-xs-6">
+			<%= form_for [@novel, @comment] do |f| %>
+        		<%= f.text_area :comment %>
+       			<%= f.submit '送信' %>
+      		<% end %>
     	</div>
     </div>
 
@@ -62,6 +77,21 @@
 	<div class="row">
 		<div class="col-xs-12">
     		<table class="comment-index">
+    			<% @comments.each do |comment| %> 
+        			<tr>
+          				<td>
+            				<%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
+              				<%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+              				<%= comment.user.name %>
+            	<% end %>
+          				</td>
+          				<td><%= comment.body %></td>
+          			<% unless current_user != comment.user %>
+            			<td><%= link_to 'Destroy', comments_path(comment.id), class: 'btn-sm btn-danger', method: :delete, data: { confirm: "コメントを削除しますか？" } %>	
+            			</td>
+          			<% end %>
+        			</tr>
+      			<% end %>
       		</table>
       	</div>
     </div>

@@ -6,7 +6,9 @@ class NovelsController < ApplicationController
 
 	def show
 		@novel = Novel.find(params[:id])
-		@user = current_user
+		@user = @novel.user
+		@comment = Comment.new
+    	@comments = @novel.comments
 	end
 
 	def new
@@ -14,15 +16,15 @@ class NovelsController < ApplicationController
 	end
 
 	def create
-		 @novel = Novel.new(novel_params)
-      	 @novel.user_id = current_user.id
+		@novel = Novel.new(novel_params)
+      	@novel.user_id = current_user.id
     	if @novel.save
            flash[:notice] = '小説を作成しました。'
            redirect_to novel_path(@novel.id)
     	else
            @novels = Novel.all
            flash[:notice] = '小説の作成に失敗しました。'
-      	   render template:"users/show"
+      	   render '/users/show'
   	  	end
   end
 	end

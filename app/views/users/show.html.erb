@@ -9,7 +9,7 @@
 <!-- メイン -->
 			<div class="col-xs-9">
 				<h1>Your Novels</h1>
-					<table class="table table-hover table-inverse">
+					<table class="table">
 						<thead>
 							<tr>
 								<th>タイトル</th>
@@ -25,7 +25,10 @@
 									<td><%= novel.caption %>
 									</td>
 									<td>
-        								<p class="comment-count"><%= @novel.comments.count %>件のコメント</p>
+										<span class="glyphicon glyphicon-heart"><%= novel.favorites.count%>いいね</span>
+									</td>
+									<td>
+        								<p class="comment-count"><%= novel.comments.count %>コメント</p>
   									</td>
   									<% if @novel.user == current_user %>
           							<td><%= link_to '編集', edit_novel_path(@novel), class: "btn-sm btn-success edit_novel_#{@novel.id}" %>

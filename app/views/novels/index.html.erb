@@ -11,7 +11,7 @@
 
 <!-- 以下投稿一覧 -->
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="novel-index　col-xs-12">
 			<h4>投稿作品一覧</h4>
 				<table class="table">
 					<thead>
@@ -33,13 +33,13 @@
 									<%= link_to @name, user_path(novel.user_id) %>
 								</td>
 								<td><%= novel.caption %></td>
-					<!-- いいね！機能 -->
+					<!-- いいね！カウント -->
 								<td>
-									？？いいね
+									<span class="glyphicon glyphicon-heart"><%= novel.favorites.count%>いいね</span>
 								</td>
 					<!-- コメントカウント -->
 								<td>
-									？？コメント
+									<%= novel.comments.count %>コメント
   								</td>
 							</tr>
 						<% end %>
