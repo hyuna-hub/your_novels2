@@ -1,7 +1,7 @@
 class NovelsController < ApplicationController
 
 	def index
-		@books = Book.all
+		@novels = Novel.all
 	end
 
 	def show
@@ -26,8 +26,7 @@ class NovelsController < ApplicationController
            flash[:notice] = '小説の作成に失敗しました。'
       	   render '/users/show'
   	  	end
-  end
-	end
+  	end
 
 	def edit
 		@novel = Novel.find(params[:id])
@@ -42,7 +41,7 @@ class NovelsController < ApplicationController
 		   flash[:notice] = '小説を更新しました。'
 		   redirect_to novel_path(@novel.id)
   		else
-  		　　flash[:notice] = '小説の更新に失敗しました。'
+  		   flash[:notice] = '小説の更新に失敗しました。'
       	   render :edit
 		end
 	end

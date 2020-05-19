@@ -12,7 +12,7 @@ class Novel < ApplicationRecord
 	validates :caption, presence: true
 
 	enum genre: {
-		未選択:0
+		未選択: 0,
 		恋愛: 1,
 		ミステリー: 2,
 		歴史: 3,
