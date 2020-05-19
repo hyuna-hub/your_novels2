@@ -14,6 +14,13 @@
       <nav class="navbar navbar-fixed-top navbar-light bg-info">
         <div class="container-fluid">
           <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="#">Your Noels</a>
           </div>
           <div class="collapse navbar-collapse" id="navbarEexample8">
@@ -21,39 +28,40 @@
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
                 <li>
-                  <a href="" class="btn-sm btn-info">マイページ</a>
+                  <%= link_to 'マイページ', user_path(current_user) %>
                 </li>
                 <li>
-                  <a href="" class="btn-sm btn-info">小説を書く</a>
+                  <%= link_to '小説を書く', new_novel_path %>
                   <!-- 小説作成画面 -->
                 </li>
                 <li>
-                 <a href="" class="btn-sm btn-info">小説を読む</a>
+                 <%= link_to '小説を探す', novels_path %>
                   <!-- 小説一覧画面 -->
                 </li>
                 <li>
-                  <a href="" class="btn-sm btn-info">ユーザー一覧</a>
+                  <%= link_to 'ユーザー一覧', users_path %>
                 </li>
                 <li>
-                  <a href="" class="btn-sm btn-info">小説一覧</a>
-                </li>
-                <li>
-                  <a href="" class="btn-sm btn-info">ログアウト</a>
+                  <%= link_to 'ログアウト', destroy_user_session_path %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to 'ホーム', root_path, class:"btn-sm btn-info" %>
+                  <%= link_to 'ホーム', root_path %>
                   <!-- topに戻る -->
                 </li>
                 <li>
-                  <%= link_to 'About', home_about_path, class:"btn-sm btn-info" %>
+                  <%= link_to 'About', home_about_path %>
                   <!-- aboutに移動ーhome/about -->
                 </li>
                 <li>
-                  <%= link_to '新規登録', new_user_registration_path, class:"btn-sm btn-info" %>
+                 <%= link_to '小説を探す', novels_path %>
+                  <!-- 小説一覧画面 -->
                 </li>
                 <li>
-                  <%= link_to 'ログイン', new_user_session_path, class:"btn-sm btn-info" %>
+                  <%= link_to '新規登録', new_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to 'ログイン', new_user_session_path %>
                 </li>
               <% end %>
             </ul>
