@@ -4,6 +4,14 @@ class NovelsController < ApplicationController
 		@novels = Novel.all
 	end
 
+	def search
+		@novels = Array.new
+		if request.post? then
+			@novel = Novel.where "mail like ?",
+			'%' + params[:find] + '%'
+		end
+	end
+
 	def show
 		@novel = Novel.find(params[:id])
 		@user = @novel.user

@@ -4,14 +4,25 @@
 		<div class="col-xs-12">
 			<h4>小説を探す</h4>
 				<p>ジャンル検索</p>
-				<p>部分一致検索</p>
+					<div class="search-form">
+						<%= form_tag(controller: "novels", action: "search") do %>
+  							<%= select_tag(:genre, options_for_select([["未選択","0"], ["恋愛","1"],["ミステリー","2"],["歴史","3"],["SF","4"],["ファンタジー","5"],["コメディ","6"],["ホラー","7"],["詩歌","8"],["エッセイ","9"],["その他","10"]])) %>
+  							<%= submit_tag "検索" %>
+						<% end %>
+					</div>
+				<p>キーワード検索</p>
+					<div class="search-form">
+    					<%= form_tag(controller: "novels", action: "search") do %>
+      					<%= text_field_tag("search", '', {class:"form-control"}) %>
+      					<%= submit_tag '検索' %>
+      					<% end %>
+					</div>
 		</div>
-	</div>
 <!-- 検索機能ここまで -->
 
 <!-- 以下投稿一覧 -->
 	<div class="row">
-		<div class="novel-index　col-xs-12">
+		<div class="novel-index col-xs-12">
 			<h4>投稿作品一覧</h4>
 				<table class="table">
 					<thead>

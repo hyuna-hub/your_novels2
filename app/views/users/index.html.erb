@@ -1,4 +1,17 @@
 <div class="container">
+<!-- 検索機能 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>ユーザーを探す</h4>
+				<p>キーワード検索</p>
+				<div class="search-form">
+    				<%= form_tag(controller: "users", action: "search") do %>
+      					<%= text_field_tag("search", '', {class:"form-control"}) %>
+      					<%= submit_tag '検索' %>
+      				<% end %>
+				</div>
+		</div>
+<!-- 検索機能ここまで -->
     <div class="row">
 		<div class="col-xs-12">
 			<h1>ユーザー</h1>
