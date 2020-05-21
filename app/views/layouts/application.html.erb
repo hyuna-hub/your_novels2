@@ -73,8 +73,8 @@
             <% end %>
 
 <!-- 検索機能 -->
-            <form class="navbar-form navbar-left" role="search">
-              <div class="search-form" style="margin-top: 70px; text-align: center;">
+            <!-- <form class="navbar-form navbar-left" role="search"> -->
+              <div class="navbar-form navbar-left" style="margin-top: 70px; text-align: center;">
                 <%= form_tag(search_path, method: :get) do %>
                   <%= text_field_tag 'search[content]' %>
                   <%= select_tag 'search[model]', options_for_select({ "小説" => "novel", "ユーザー" => "user" }) %>
@@ -94,7 +94,7 @@
   <%= yield %>
 
       <footer class="footer">
-        <div class="container">
+        <div class="container style="background-color: #CCFFFF;">
           <div class="row">
             <div class="col-xs-3 col-xs-offset-5">
               <p class="footer-text">Your Novels</p>

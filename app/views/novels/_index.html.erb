@@ -1,0 +1,62 @@
+<!-- 検索機能 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>小説を探す</h4>
+				<p>ジャンル検索</p>
+					<div class="search-form">
+						<%= form_tag(search_path, method: :get) do %>
+  							<%= select_tag('search[content]', options_for_select([["未選択","0"], ["恋愛","1"],["ミステリー","2"],["歴史","3"],["SF","4"],["ファンタジー","5"],["コメディ","6"],["ホラー","7"],["詩歌","8"],["エッセイ","9"],["その他","10"]])) %>
+  							<%= hidden_field_tag 'search[model]', "genre" %>
+  							<%= submit_tag "検索" %>
+						<% end %>
+					</div>
+				<p>キーワード検索</p>
+					<div class="search-form">
+    					<%= form_tag(search_path, method: :get) do %>
+      						<%= text_field_tag 'search[content]' %>
+      						<%= hidden_field_tag 'search[model]', "novel" %>
+      						<%= submit_tag '検索' %>
+      					<% end %>
+					</div>
+		</div>
+<!-- 検索機能ここまで -->
+
+<!-- 以下投稿一覧 -->
+	<div class="row">
+		<div class="novel-index col-xs-12">
+			<h4>投稿作品一覧</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>タイトル</th>
+							<th>ジャンル</th>
+							<th>作者</th>
+							<th>キャプション</th>
+							<th colspan="2"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% novels.each do |novel| %>
+							<tr>
+								<td><%= link_to novel.title, novel_path(novel.id) %></td>
+								<td><%= novel.genre %></td>
+								<td>
+									<%= link_to @name, user_path(novel.user_id) %>
+								</td>
+								<td><%= novel.caption %></td>
+					<!-- いいね！カウント -->
+								<td>
+									<span class="glyphicon glyphicon-heart"><%= novel.favorites.count%>いいね</span>
+								</td>
+					<!-- コメントカウント -->
+								<td>
+									<%= novel.comments.count %>コメント
+  								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+		</div>
+	</div>

@@ -20,6 +20,41 @@
 		</button>
 	</div>
 	<div class="row">
-		<h4>ランキング</h4>
+		<div class="novel-index col-xs-12">
+			<h4>ランキング　今は新着順</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>タイトル</th>
+							<th>ジャンル</th>
+							<th>作者</th>
+							<th>キャプション</th>
+							<th colspan="2"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @novels.each do |novel| %>
+							<tr>
+								<td><%= link_to novel.title, novel_path(novel.id) %></td>
+								<td><%= novel.genre %></td>
+								<td>
+									<%= link_to @name, user_path(novel.user_id) %>
+								</td>
+								<td><%= novel.caption %></td>
+					<!-- いいね！カウント -->
+								<td>
+									<span class="glyphicon glyphicon-heart"><%= novel.favorites.count%>いいね</span>
+								</td>
+					<!-- コメントカウント -->
+								<td>
+									<%= novel.comments.count %>コメント
+  								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+		</div>
 	</div>
 </div>

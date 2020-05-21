@@ -1,7 +1,7 @@
 class MemosController < ApplicationController
 
 	def index
-		@memos = Memo.all
+		@memos = Memo.order("id DESC")
 		@user = current_user
 	end
 

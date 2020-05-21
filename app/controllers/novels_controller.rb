@@ -1,15 +1,7 @@
 class NovelsController < ApplicationController
 
 	def index
-		@novels = Novel.all
-	end
-
-	def search
-		@novels = Array.new
-		if request.post? then
-			@novel = Novel.where "mail like ?",
-			'%' + params[:find] + '%'
-		end
+		@novels = Novel.order("id DESC")
 	end
 
 	def show
