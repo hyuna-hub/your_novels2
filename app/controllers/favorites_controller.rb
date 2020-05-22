@@ -4,14 +4,12 @@ class FavoritesController < ApplicationController
     @novel = Novel.find(params[:novel_id])
     favorite = @novel.favorites.new(user_id: current_user.id)
     favorite.save
-    redirect_to request.referer
   end
 
   def destroy
     @novel = Novel.find(params[:novel_id])
     favorite = current_user.favorites.find_by(novel_id: @novel.id)
     favorite.destroy
-    redirect_to request.referer
   end
 
 	private
