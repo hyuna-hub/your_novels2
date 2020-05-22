@@ -15,4 +15,11 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery_ujs
+//= require bootstrap
+//= require summernote/summernote-bs4.min
+//= require summernote-init
 //= require_tree .
+
+// load specific locale(ja-JP)
+//= require summernote/lang/summernote-ja-JP

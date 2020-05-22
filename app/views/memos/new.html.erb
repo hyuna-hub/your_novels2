@@ -23,14 +23,14 @@
 					<div class="field row">
 						<label for="memo_body">本文</label>
 						<div class="col-xs-12">
-							<%= f.text_area :body %>
+							<%= f.text_area :body, 'data-provider': :summernote %>
 						</div>
 					</div>
 
 					<div class="action row">
-						<button type="button" class="btn btn-success">
+						<!-- <button type="button" class="btn btn-success"> -->
 							<%= f.submit 'メモを作成' %>
-						</button>
+						<!-- </button> -->
 					</div>
 
 				<% end %>

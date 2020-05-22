@@ -70,3 +70,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem "pry-rails"
+
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.12.0'

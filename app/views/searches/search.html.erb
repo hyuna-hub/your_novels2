@@ -4,11 +4,11 @@
   		<h3>「<%= @content %>」での検索結果</h3>
   		<%= render 'users/index', users: @records %>
 <!-- 小説のキーワード検索結果 -->
-	<% else @model == 'novels' %>
+	<% elsif @model == 'novels' %>
   		<h3>「<%= @content %>」での検索結果</h3>
     	<%= render 'novels/index', novels: @records %>
 <!-- 小説のジャンル検索結果 -->
-  	<% else @model == 'genres' %>
+  	<% elsif @model == 'genres' %>
   		<h3>「<%= @content %>」での検索結果</h3>
     		<%= render 'novels/index', novels: @records %>
  	<% end %>
