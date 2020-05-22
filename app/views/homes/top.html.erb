@@ -21,10 +21,11 @@
 	</div>
 	<div class="row">
 		<div class="novel-index col-xs-12">
-			<h4>ランキング　今は新着順</h4>
+			<h4>人気ランキング</h4>
 				<table class="table">
 					<thead>
 						<tr>
+							<th colspan="1">順位</th>
 							<th>タイトル</th>
 							<th>ジャンル</th>
 							<th>作者</th>
@@ -34,8 +35,9 @@
 					</thead>
 
 					<tbody>
-						<% @novels.each do |novel| %>
+						<% @novels.each.with_index(1) do |novel, i| %>
 							<tr>
+								<td><%= i %>位</td>
 								<td><%= link_to novel.title, novel_path(novel.id) %></td>
 								<td><%= novel.genre %></td>
 								<td>
