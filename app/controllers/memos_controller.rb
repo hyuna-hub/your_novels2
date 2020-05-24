@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
 		@memos = Memo.order("id DESC")
