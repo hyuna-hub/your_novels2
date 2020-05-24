@@ -3,14 +3,15 @@ Rails.application.routes.draw do
 	get 'home/about', to: 'homes#about'
   get '/search', to: 'searches#search'
 
-	resources :novels
-	resources :memos
+	resources :novels do
+    resources :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+	end
+
+  resources :memos
 
   devise_for :users
   resources :users
-
-  resources :favorites, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

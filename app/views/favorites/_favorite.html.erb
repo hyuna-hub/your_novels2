@@ -1,9 +1,9 @@
 <% if novel.favorited_by?(current_user) %>
-    <%= link_to favorite_path(novel, redirect_id: 0), method: :delete, remote: true do %>
+    <%= link_to novel_favorite_path(novel, redirect_id: 0), method: :delete, remote: true do %>
       <span class="glyphicon glyphicon-heart"><%= novel.favorites.count%></span>
     <% end %>
   <% else %>
-    <%= link_to favorites_path(novel, redirect_id: 0), method: :post, remote: true do %>
+    <%= link_to novel_favorites_path(novel, redirect_id: 0), method: :post, remote: true do %>
       <span class="glyphicon glyphicon-heart-empty"><%= novel.favorites.count %></span>
     <% end %>
   <% end %>

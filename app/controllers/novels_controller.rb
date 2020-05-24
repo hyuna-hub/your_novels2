@@ -8,8 +8,8 @@ class NovelsController < ApplicationController
 		@novel = Novel.find(params[:id])
 		@user = @novel.user
 		@comment = Comment.new
-    	# @comments = @novel.comments
-    	@comments = Comment.where(novel_id: @comment.novel_id)
+    	@comments = @novel.comments
+    	# @comments = Comment.where(novel_id: @comment.novel_id)
 	end
 
 	def new
