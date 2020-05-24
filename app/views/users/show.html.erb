@@ -31,7 +31,7 @@
 									<td>
         								<p class="comment-count"><%= novel.comments.count %>コメント</p>
   									</td>
-  									<% if @novel.user == current_user %>
+  									<% if @user == current_user %>
           							<td><%= link_to '編集', edit_novel_path(@novel), class: "btn-sm btn-success edit_novel_#{@novel.id}" %>
           							</td>
           							<td><%= link_to '削除', @novel, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_novel_#{@novel.id}"%>

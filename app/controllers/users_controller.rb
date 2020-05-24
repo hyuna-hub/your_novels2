@@ -4,14 +4,6 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
-	def search
-		@users = Array.new
-		if request.post? then
-			@users = User.where "mail like ?",
-			'%' + params[:find] + '%'
-		end
-	end
-
 	def show
 		@user = User.find(params[:id])
 		@novels = @user.novels
