@@ -4,16 +4,16 @@ class SearchesController < ApplicationController
     	@model = params["search"]["model"]
     	@content = params["search"]["content"]
     	@records = search_for(@model, @content)
-  	end
+  end
 
-  	private
+  private
   	def search_for(model, content)
-    	if model == 'user'
-        	User.where('name LIKE ?', '%'+content+'%')
-    	elsif model == 'novel'
-        	Novel.where('title LIKE ?', '%'+content+'%')
-        elsif model == 'genre'
-        	Novel.where(genre: content)
-    	end
-  	end
-end
+  	  if model == 'user'
+      	User.where('name LIKE ?', '%'+content+'%')
+  	  elsif model == 'novel'
+      	Novel.where('title LIKE ?', '%'+content+'%')
+      elsif model == 'genre'
+      	Novel.where(genre: content)
+  	  end
+    end
+  end
