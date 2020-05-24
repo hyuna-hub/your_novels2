@@ -3,42 +3,38 @@
 
 <!-- 小説詳細 -->
 	<div class="row">
-		<div class="novel-title col-xs-8">
-			<%= @novel.title %>
+		<div class="novel-title col-xs-7">
+			<h2>『<%= @novel.title %>』</h2>
 		</div>
-		<div class="novel-button col-xs-4">
+		<div class="novel-button col-xs-5">
 			<% if @novel.user == current_user %>
-			    <button type="button" class="btn btn-success col-xs-2">
-					<%= link_to "編集", edit_novel_path(@novel.id) %>
-				</button>
-				<button type="button" class="btn btn-danger col-xs-2">
-					<%= link_to "削除", novel_path(@novel.id), method: :delete, data: { confirm: "この小説を削除しますか？" } %>
-				</button>
+				<%= link_to "編集", edit_novel_path(@novel.id), class: "btn btn-success col-xs-2"%>
+				<%= link_to "削除", novel_path(@novel.id), method: :delete, data: { confirm: "この小説を削除しますか？" }, class: "btn btn-danger col-xs-2 col-xs-offset-1" %>
 			<% end %>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="novel-user-name col-xs-12">
-			<%= link_to @user.name, user_path(@user.id) %>さんの小説
+			<h5><strong><%= link_to @user.name, user_path(@user.id) %>さんの小説</strong></h5>
 		</div>
 	</div>
 	<div class="row">
 		<div class="novel-genre col-xs-4">
-			<p>ジャンル：<%= @novel.genre %></p>
+			<h5><strong>ジャンル：</strong><%= @novel.genre %></h5>
 		</div>
   	</div>
 
   	<div class="row">
 		<div class="novel-caption col-xs-12">
-			<p>キャプション</p><br>
-			<%= @novel.caption %>
+			<h5><strong>キャプション</strong></h5>
+			<p><%= @novel.caption %></p>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" style="padding-top:20px">
 		<div class="novel-body col-xs-12">
-			<p>本文</p><br>
+			<h5><strong>本文</strong></h5>
 			<%= @novel.body.html_safe %>
 		</div>
 	</div>

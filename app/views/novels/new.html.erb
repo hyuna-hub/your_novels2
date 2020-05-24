@@ -5,38 +5,38 @@
 <!-- 入力フォーム -->
 		<%= form_for @novel do |f| %>
 
-			<div class="field row">
+			<div class="field row" style="padding-top:10px">
 				<label for="novel_title">タイトル</label>
 				<div class="col-xs-12">
-					<%= f.text_field :title %>
+					<%= f.text_field :title, :size=> "60" %>
 				</div>
 			</div>
 
-			<div class="field row">
+			<div class="field row" style="padding-top:10px">
       			<label for="novel_genre">ジャンル</label>
-      			<div class="col-sm-12">
+      			<div class="col-xs-12">
         			<%= f.select :genre, ['未選択', '恋愛', 'ミステリー', '歴史', 'SF', 'ファンタジー', 'コメディ', 'ホラー', '詩歌', 'エッセイ', 'その他'],{ class: "genre"} %>
       			</div>
     		</div>
 
-			<div class="field row">
+			<div class="field row" style="padding-top:10px">
 				<label for="novel_caption">キャプション</label>
 				<div class="col-xs-12">
-					<%= f.text_field :caption %>
+					<%= f.text_area :caption, :size=> "120x5" %>
 				</div>
 			</div>
 
-			<div class="field row">
+			<div class="field row" style="padding-top:10px">
 				<label for="novel_body">本文</label>
 				<div class="col-xs-12">
 					<%= f.text_area :body, 'data-provider': :summernote %>
 				</div>
 			</div>
 
-			<div class="action row">
-				<!-- <button type="button" class="btn btn-success"> -->
+			<div class="action row" style="padding-top:20px">
+				<div class="col-xs-3">
 					<%= f.submit '小説を作成' %>
-				<!-- </button> -->
+				</div>
 			</div>
 
 		<% end %>

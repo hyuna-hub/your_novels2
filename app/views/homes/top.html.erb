@@ -1,27 +1,19 @@
 <div class='container'>
-	<div class="row">
-		<h1>Your Novelsにようこそ</h1>
-			<p>登録済みの方はログイン、まだ登録がお済みでない方はサインアップをお願いいたします。</p>
-			<p>ログイン無しで利用できるのは小説の閲覧のみとなっております。</p>
-			<p>本サイトに関する説明は上部のAboutよりご確認いただけます。</p>
-			<h2>画像の上に文字</h2>
-	</div>
-	<!-- ログインリンク -->
-	<div class="row">
-		<button type="button" class="btn btn-info btn-default col-xs-3 col-xs-offset-1">
-			<%= link_to "ログイン", new_user_session_path %>
-		</button>
+<!-- 説明文 -->
+	<div class="row top-introduction">
+		<div class="top-introduction-text">
+		<h1>　Your Novelsにようこそ</h1>
+			<p>　　「Your Novels」は手軽に小説を書く事ができるサイトです。</p>
+			<p>　　ちょっとした空き時間を利用して創作を楽しんでみませんか？</p>
+			<br>
+			<p>　　本サイトについて詳しく知りたい方は上部の「Your Novelsとは？」をご覧ください。</p>
+		</div>
 	</div>
 
-	<!-- サインアップリンク -->
-	<div class="row">
-		<button type="button" class="btn btn-success col-xs-3 col-xs-offset-1">
-			<%= link_to "新規登録", new_user_registration_path %>
-		</button>
-	</div>
+<!-- ランキング -->
 	<div class="row">
 		<div class="novel-index col-xs-12">
-			<h4>人気ランキング</h4>
+			<h3><%= image_tag 'ranking.jpeg' %>人気ランキング</h3>
 				<table class="table">
 					<thead>
 						<tr>

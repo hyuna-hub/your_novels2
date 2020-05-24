@@ -13,24 +13,24 @@
 <!-- 入力フォーム -->
 				<%= form_for @memo do |f| %>
 
-					<div class="field row">
+					<div class="field row" style="padding-top:10px">
 						<label for="memo_title">タイトル</label>
 						<div class="col-xs-12">
-							<%= f.text_field :title %>
+							<%= f.text_field :title, :size=>"60" %>
 						</div>
 					</div>
 
-					<div class="field row">
+					<div class="field row" style="padding-top:10px">
 						<label for="memo_body">本文</label>
 						<div class="col-xs-12">
 							<%= f.text_area :body, 'data-provider': :summernote %>
 						</div>
 					</div>
 
-					<div class="action row">
-						<!-- <button type="button" class="btn btn-success"> -->
+					<div class="action row" style="padding-top:20px">
+						<div class="col-xs-3">
 							<%= f.submit 'メモを作成' %>
-						<!-- </button> -->
+						</div>
 					</div>
 
 				<% end %>
